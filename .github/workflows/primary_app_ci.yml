@@ -2,10 +2,13 @@ name: Back-End CI
 
 on:
   push:
-    branches: [main]
+    branches:
+    - main
+    - 'PIZ[0-9]*-*'
   pull_request:
-    branches: [main]
-
+    branches:
+    - main
+    - 'PIZ[0-9]*-*'
 jobs:
   build:
 
