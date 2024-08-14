@@ -85,3 +85,11 @@ def test_get_all(app, ingredients, sizes, client_data):
         assert current_id in searchable_orders
         for param, value in created_order.items():
             pytest.assume(searchable_orders[current_id][param] == value)
+
+def test_create_empty_ingredients_list(app, size, client_data):
+    created_size, _ = __create_sizes_and_ingredients([], [size])
+    order = __order([], created_size, client_data)
+    created_order, error = OrderController.create(order)
+    pytest.assume(error is None)
+    pytest.assume(created_order is not None)
+    pytest.assume(created_order['total_price'] == round(created_size['price'], 2))
