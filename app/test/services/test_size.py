@@ -9,7 +9,6 @@ def test_get_sizes_service(client, create_sizes, size_uri):
     for size in create_sizes:
         pytest.assume(size["_id"] in returned_sizes)
 
-
 def test_create_size_service(create_size):
     size = create_size.json
     pytest.assume(create_size.status.startswith("200"))
@@ -25,7 +24,6 @@ def test_update_size_service(client, create_size, size_uri):
     updated_size = response.json
     for param, value in update_data.items():
         pytest.assume(updated_size[param] == value)
-
 
 def test_get_size_by_id_service(client, create_size, size_uri):
     current_size = create_size.json
