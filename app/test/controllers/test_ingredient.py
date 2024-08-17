@@ -17,10 +17,8 @@ def test_update(app, ingredient: dict):
         'name': 'updated',
         'price': 10
     }
-    updated_ingredient, error = IngredientController.update({
-        '_id': created_ingredient['_id'],
-        **updated_fields
-    })
+    _id = created_ingredient["_id"]
+    updated_ingredient, error = IngredientController.update(_id, updated_fields)
     pytest.assume(error is None)
     ingredient_from_database, error = IngredientController.get_by_id(created_ingredient['_id'])
     pytest.assume(error is None)

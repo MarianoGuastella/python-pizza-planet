@@ -17,10 +17,8 @@ def test_update(app, size: dict):
         'name': 'updated',
         'price': 10
     }
-    updated_size, error = SizeController.update({
-        '_id': created_size['_id'],
-        **updated_fields
-    })
+    _id = created_size["_id"]
+    updated_size, error = SizeController.update(_id, updated_fields)
     pytest.assume(error is None)
     for param, value in updated_fields.items():
         pytest.assume(updated_size[param] == value)
