@@ -2,7 +2,7 @@ import pytest
 
 def test_create_order_service(create_order):
     order = create_order.json
-    pytest.assume(create_order.status.startswith("200"))
+    pytest.assume(create_order.status_code == 201)
     pytest.assume(order["detail"])
     pytest.assume(order["size"])
     pytest.assume(order["_id"])
@@ -13,8 +13,8 @@ def test_create_order_service(create_order):
 
 def test_get_order_by_id_service(client, create_order, order_uri):
     created_order = create_order.json
-    response = client.get(f'{order_uri}id/{created_order["_id"]}')
-    pytest.assume(response.status.startswith("200"))
+    response = client.get(f'{order_uri}{created_order["_id"]}')
+    pytest.assume(response.status_code == 200)
     returned_order = response.json
     for param, value in created_order.items():
         pytest.assume(returned_order[param] == value)
