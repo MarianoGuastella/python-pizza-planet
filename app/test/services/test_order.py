@@ -3,7 +3,8 @@ import pytest
 def test_create_order_service(create_order):
     order = create_order.json
     pytest.assume(create_order.status_code == 201)
-    pytest.assume(order["detail"])
+    pytest.assume(order["ingredient_detail"])
+    pytest.assume(order["beverage_detail"])
     pytest.assume(order["size"])
     pytest.assume(order["_id"])
     pytest.assume(order["client_address"])

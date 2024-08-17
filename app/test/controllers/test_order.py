@@ -46,9 +46,9 @@ def test_create(app, ingredients, beverages, size, client_data):
         pytest.assume(created_order['_id'])
         pytest.assume(size_id == created_order['size']['_id'])
 
-        ingredients_in_detail = set(item['ingredient']['_id'] for item in created_order['detail'] if not item['ingredient'] == None)
+        ingredients_in_detail = set(item['ingredient']['_id'] for item in created_order['ingredient_detail'] if not item['ingredient'] == None)
         pytest.assume(not ingredients_in_detail.difference(ingredient_ids))
-        beverages_in_detail = set(item['beverage']['_id'] for item in created_order['detail'] if not item['beverage'] == None)
+        beverages_in_detail = set(item['beverage']['_id'] for item in created_order['beverage_detail'] if not item['beverage'] == None)
         pytest.assume(not beverages_in_detail.difference(beverage_ids))
 
 
@@ -73,9 +73,9 @@ def test_get_by_id(app, ingredients, beverages, size, client_data):
         pytest.assume(order_from_db[param] == value)
         pytest.assume(size_id == created_order['size']['_id'])
 
-        ingredients_in_detail = set(item['ingredient']['_id'] for item in created_order['detail'] if not item['ingredient'] == None)
+        ingredients_in_detail = set(item['ingredient']['_id'] for item in created_order['ingredient_detail'] if not item['ingredient'] == None)
         pytest.assume(not ingredients_in_detail.difference(ingredient_ids))
-        beverages_in_detail = set(item['beverage']['_id'] for item in created_order['detail'] if not item['beverage'] == None)
+        beverages_in_detail = set(item['beverage']['_id'] for item in created_order['beverage_detail'] if not item['beverage'] == None)
         pytest.assume(not beverages_in_detail.difference(beverage_ids))
 
 
