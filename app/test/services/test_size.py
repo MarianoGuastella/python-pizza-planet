@@ -4,8 +4,7 @@ from app.test.utils.functions import get_random_price, get_random_string
 
 def test_create_size_service(client, size_uri, size):
     response = client.post(size_uri, json=size)
-    print(response.json)
-    assert response.status_code == 201
+    pytest.assume(response.status_code == 201)
     created_size = response.json
     pytest.assume(created_size["_id"])
     pytest.assume(created_size["name"] == size["name"])
