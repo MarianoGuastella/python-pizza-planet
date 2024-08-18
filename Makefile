@@ -9,7 +9,7 @@ linux-create:
 	pip install -r requirements.txt
 
 win-source:
-	call venv\\Scripts\\activate && \
+	source venv/Scripts/activate && \
 	set FLASK_ENV=development
 
 linux-source:
