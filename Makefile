@@ -1,7 +1,20 @@
-create:
+win-create:
 	python -m venv venv && \
+	call venv\\Scripts\\activate && \
+	pip install -r requirements.txt
+
+linux-create:
+	python -m venv venv && \
+	source venv/bin/activate && \
+	pip install -r requirements.txt
+
+win-source:
 	source venv/Scripts/activate && \
-	pip3 install -r requirements.txt
+	set FLASK_ENV=development
+
+linux-source:
+	source venv/bin/activate && \
+	export FLASK_ENV=development 
 
 db:
 	python manage.py db init && \
@@ -13,3 +26,15 @@ run:
 
 test:
 	python manage.py test
+
+create-seed:
+	python app/common/scripts/faker_seed.py
+
+clean-seed:
+	python app/common/scripts/clean_seed.py
+
+format:
+	black .
+
+lint:
+	ruff check .

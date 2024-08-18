@@ -1,6 +1,7 @@
 from typing import Any, Dict, Tuple, Type
 from flask import jsonify, Response
 
+
 class BaseService:
     def __init__(self, controller: Type):
         self.controller = controller

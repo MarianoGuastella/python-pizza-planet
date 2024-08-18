@@ -30,7 +30,7 @@ class BaseController:
     @classmethod
     def update(cls, _id: Any, new_values: dict) -> Tuple[Any, Optional[str]]:
         if not _id:
-                return None, 'Error: No id was provided for update'
+            return None, "Error: No id was provided for update"
         try:
             return cls.manager.update(_id, new_values), None
         except (SQLAlchemyError, RuntimeError) as ex:
