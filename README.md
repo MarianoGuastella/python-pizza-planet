@@ -123,11 +123,11 @@ python3 manage.py test
 - Create seed
 
 ```bash
-	python app/common/scripts/faker_seed.py
+python app/common/scripts/faker_seed.py
 ```
 
 - Delete seed
 
 ```bash
-	python app/common/scripts/clean_seed.py
+python app/common/scripts/clean_seed.py
 ```
