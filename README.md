@@ -10,6 +10,7 @@ This is an example software for a pizzeria that takes customizable orders.
 - [Running the backend project](#running-the-backend-project)
 - [Running the frontend](#running-the-frontend)
 - [Testing the backend](#testing-the-backend)
+- [Managing seeds for reports](#managing-seeds-for-reports)
 
 ## Getting started
 
@@ -20,6 +21,8 @@ You will need the following general tools:
 - A text editor: preferably [Visual Studio Code](https://code.visualstudio.com/download)
 
 - Extensions such as [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) and [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+
+- You can also set up the app using the Makefile!
 
 ## Running the backend project
 
@@ -107,8 +110,24 @@ ext install ritwickdey.LiveServer
 
 - Make sure that you have `pytest` installed
 
+- Test coverage should always be above 90%
+
 - Run the test command
 
 ```bash
 python3 manage.py test
+```
+
+### Managing seeds for reports
+
+- Create seed
+
+```bash
+	python app/common/scripts/faker_seed.py
+```
+
+- Delete seed
+
+```bash
+	python app/common/scripts/clean_seed.py
 ```
